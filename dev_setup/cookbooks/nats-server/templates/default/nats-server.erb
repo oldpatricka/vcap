@@ -12,7 +12,7 @@ PATH=<%= node[:ruby][:path] %>/bin:/sbin:/usr/sbin:/bin:/usr/bin
 DESC="nats-server"
 NAME=nats-server
 DAEMON_NAME=nats-server
-DAEMON=<%= node[:ruby][:path] %>/bin/nats-server
+DAEMON=`<%= node[:ruby][:path] %>/bin/gem env gemdir`/bin/nats-server
 DAEMON_ARGS="-d -c <%= node[:nats][:config] %>"
 
 PIDFILE=/var/run/nats-server.pid
