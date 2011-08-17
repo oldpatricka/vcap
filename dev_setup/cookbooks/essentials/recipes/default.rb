@@ -28,3 +28,11 @@ directory File.join(node[:deployment][:config_path], "staging") do
   recursive true
   action :create
 end
+
+if node[:deployment][:profile]
+  file node[:deployment][:profile] do
+    owner node[:deployment][:user]
+    group node[:deployment][:group]
+    content "export PATH=#{node[:ruby][:path]}/bin:`#{node[:ruby][:path]}/bin/gem env gempath`/bin:$PATH"
+  end
+end
