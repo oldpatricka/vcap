@@ -1,4 +1,5 @@
 default[:cloud_controller][:config_file] = "cloud_controller.yml"
+default[:cloud_controller][:local_route] = "127.0.0.1"
 # Staging
 default[:cloud_controller][:staging][:grails] = "grails.yml"
 default[:cloud_controller][:staging][:lift] = "lift.yml"

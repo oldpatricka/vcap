@@ -1,5 +1,8 @@
 ---
-local_route: 127.0.0.1
+<%= require 'resolv'
+if !node[:health_manager][:local_route].empty?:
+  "local_route: " + Resolv.getaddress(node[:health_manager][:local_route])
+end %>
 mbus: nats://<%= node[:nats][:user] %>:<%= node[:nats][:password] %>@<%= node[:nats][:host] %>:<%= node[:nats][:port] %>/
 logging:
   level: debug

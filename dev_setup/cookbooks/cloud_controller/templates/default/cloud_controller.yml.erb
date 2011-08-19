@@ -2,7 +2,10 @@
 external_uri: api.vcap.me
 description: "VMware's Cloud Application Platform"
 support_address: http://support.cloudfoundry.com
-local_route: 127.0.0.1
+<%= require 'resolv'
+if !node[:cloud_controller][:local_route].empty?:
+  "local_route: " + Resolv.getaddress(node[:cloud_controller][:local_route])
+end %>
 local_register_only: false
 
 # Legacy (FIXME REMOVE)
